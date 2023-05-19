@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About Page</title>
+  <title>About Cbass92</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    
-    h1 {
-      color: #333;
-    }
-    
-    p {
-      color: #666;
-      line-height: 1.5;
+    /* Style for the iframes */
+    .website-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Yeah, this is Cbass92 website. I am contantly adding more videos. Anywho, here's happy wheels<h1
-  <h2>Happy Wheels</h2>
-  <iframe src="https://www.totaljerkface.com/happy_wheels.tjf" width="800" height="600" frameborder="0" style="border:0"></iframe>
+  <h1>About Cbass92</h1>
+  
+  <p>Hello! Welcome to 92vids. I'm Cbass92, a beginning programmer who is learning HTML and JS. this website is updated frequently with more movies. I also added some other stuff below.</p>
+  
+  <h2>Featured Websites</h2>
+  
+  <!-- Button 1 -->
+  <button onclick="loadWebsite('https://www.example1.com')">Website 1</button>
+  
+  <!-- Button 2 -->
+  <button onclick="loadWebsite('https://www.example2.com')">Website 2</button>
+  
+  <!-- Button 3 -->
+  <button onclick="loadWebsite('https://www.example3.com')">Website 3</button>
+  
+  <!-- Iframe container -->
+  <div id="websiteContainer"></div>
+  
+  <script>
+    function loadWebsite(url) {
+      var websiteContainer = document.getElementById('websiteContainer');
+      websiteContainer.innerHTML = '<iframe class="website-iframe" src="' + url + '"></iframe>';
+    }
+  </script>
 </body>
 </html>
