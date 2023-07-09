@@ -23,6 +23,10 @@
       height: 200px;
       resize: none;
     }
+    #length-input {
+      width: 100%;
+      margin-top: 10px;
+    }
     #generate-btn {
       margin-top: 10px;
     }
@@ -42,6 +46,7 @@
   <div id="container">
     <h1>Permutation Generator</h1>
     <textarea id="input-textarea" placeholder="Enter items, each on a separate line"></textarea>
+    <input type="number" id="length-input" placeholder="Permutation Length" min="1">
     <button id="generate-btn" onclick="generatePermutations()">Generate Permutations</button>
     <div id="loading-indicator">Generating permutations...</div>
     <a id="result-link" href="#" download="permutations.txt">Download Permutations</a>
@@ -57,13 +62,21 @@
         return;
       }
 
+      var lengthInput = document.getElementById("length-input");
+      var length = parseInt(lengthInput.value);
+
+      if (isNaN(length) || length <= 0) {
+        alert("Please enter a valid permutation length.");
+        return;
+      }
+
       var loadingIndicator = document.getElementById("loading-indicator");
       var resultLink = document.getElementById("result-link");
 
       loadingIndicator.style.display = "block";
       resultLink.style.display = "none";
 
-      var permutations = getPermutations(items);
+      var permutations = getPermutations(items, length);
 
       setTimeout(function() {
         loadingIndicator.style.display = "none";
@@ -75,11 +88,11 @@
       }, 1000);
     }
 
-    function getPermutations(items) {
+    function getPermutations(items, length) {
       var results = [];
 
       function permute(arr, memo = []) {
-        if (arr.length === 0) {
+        if (memo.length === length) {
           results.push(memo.join(", "));
           return;
         }
